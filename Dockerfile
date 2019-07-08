@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM php:5-apache
+FROM php:7-apache
 
 RUN apt-get update
-RUN apt-get install -y php-pear
+#RUN apt-get install -y php-pear
 RUN pear channel-discover pear.nrk.io
 RUN pear install nrk/Predis
 
@@ -35,7 +35,7 @@ ADD img/* /var/www/html/img/
 ADD js/* /var/www/html/js/
 ADD css/* /var/www/html/css/
 
-# Make sure it's all readable. 
+# Make sure it's all readable.
 #
-RUN find /var/www/html/ -type d -exec chmod 755 {} \; 
+RUN find /var/www/html/ -type d -exec chmod 755 {} \;
 RUN find /var/www/html/ -type f -exec chmod 644 {} \;
